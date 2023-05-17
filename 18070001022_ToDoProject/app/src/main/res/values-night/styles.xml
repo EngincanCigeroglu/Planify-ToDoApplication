@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomDatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <!-- Diğer özel öznitelikler -->
+        <item name="android:windowBackground">@android:color/white</item> <!-- Dialog arka plan rengini ayarlamak için örnek -->
+    </style>
+
+
+</resources>
