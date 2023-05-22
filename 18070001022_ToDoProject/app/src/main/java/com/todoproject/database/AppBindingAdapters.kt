@@ -53,14 +53,5 @@ class AppBindingAdapters {
                 Priority.LOW -> { cardView.setCardBackgroundColor(cardView.context.getColor(R.color.green)) }
             }
         }
-   /*     @BindingAdapter("android:sendDataToUpdateFragment")
-        @JvmStatic
-        fun sendDataToUpdateFragment(view: ConstraintLayout, currentItem: MyData){
-            view.setOnClickListener {
-                val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
-                view.findNavController().navigate(action)
-            }
-        }
-*/
     }
 }

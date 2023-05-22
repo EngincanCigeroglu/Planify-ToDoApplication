@@ -78,7 +78,6 @@ class UpdateFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.updatefragment_menu, menu)
 
@@ -106,16 +105,6 @@ class UpdateFragment : Fragment() {
         val date = dateFormat.parse(date_text)
         val mydate = date?.time ?: 0
 
-        /*
-        val taskTitle = view?.findViewById<EditText>(R.id.Update_Task_title)
-        val prioritySpinner = view?.findViewById<Spinner>(R.id.Update_Priority_spinner)
-        val taskDescription = view?.findViewById<EditText>(R.id.Update_Task_description)
-
-        val mTitle = taskTitle?.text.toString()
-        val mDescription = taskDescription?.text.toString()
-        val mPriority = prioritySpinner?.selectedItem.toString()
-
-        val validation = appSharedViewModel.verifyDataFromUser(mTitle, mPriority) */
         val validation = appSharedViewModel.verifyDataFromUser(taskTitle, prioritySpinner)
         if (validation)
         {
@@ -137,8 +126,6 @@ class UpdateFragment : Fragment() {
         }
     }
 
-
-    //Delete Task with alert message
     private fun deleteTask() {
         val alertbuilder = AlertDialog.Builder(requireContext())
 
@@ -157,17 +144,6 @@ class UpdateFragment : Fragment() {
         alertbuilder.create().show()
 
     }
-
-/*
-    private fun PriorityParse(priority: Priority): Int{
-        return when(priority)
-        {
-            Priority.HIGH -> 0
-            Priority.MEDIUM -> 1
-            Priority.LOW -> 2
-            else -> {0}
-        }
-    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()

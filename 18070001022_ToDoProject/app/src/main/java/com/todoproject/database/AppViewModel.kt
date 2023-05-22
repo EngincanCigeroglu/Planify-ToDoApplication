@@ -21,6 +21,9 @@ class AppViewModel (application: Application) : AndroidViewModel(application) {
     val sortByHighPriority: LiveData<List<MyData>> = repository.sortByHighPriority
     val sortByLowPriority: LiveData<List<MyData>> = repository.sortByLowPriority
 
+    val sortByDateDesc: LiveData<List<MyData>> = databaseDao.sortByDateDesc()
+    val sortByDateAsc: LiveData<List<MyData>> = databaseDao.sortByDateAsc()
+
     fun insertData(mdata: MyData) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertData(mdata)

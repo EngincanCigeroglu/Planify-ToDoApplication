@@ -11,6 +11,9 @@ class AppRepository(private val databaseDao: DatabaseDao) {
     val sortByHighPriority: LiveData<List<MyData>> = databaseDao.sortByHighPriority()
     val sortByLowPriority: LiveData<List<MyData>> = databaseDao.sortByLowPriority()
 
+    val sortByDateDesc: LiveData<List<MyData>> = databaseDao.sortByDateDesc()
+    val sortByDateAsc: LiveData<List<MyData>> = databaseDao.sortByDateAsc()
+
     suspend fun insertData(mydata: MyData){
         databaseDao.insertData(mydata)
     }

@@ -12,9 +12,10 @@ class Note_repository (private val noteDao: Note_databasedao) {
         noteDao.insertNote(note)
     }
 
-    fun updateNote(note: MyNotes){
-        return noteDao.updateNote(note)
+    fun updateNote(note: MyNotes) {
+        noteDao.updateNote(note)
     }
+
 
     fun searchDatabase(searchQuery: Long): LiveData<MyNotes> {
         return noteDao.searchDatabase(searchQuery)

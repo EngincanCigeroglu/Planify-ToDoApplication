@@ -21,8 +21,15 @@
                 <item
                     android:id="@+id/menu_priority_low"
                     android:title="@string/priority_low"/>
+                <item
+                    android:id="@+id/menu_desc"
+                    android:title="Old To New"/>
+                <item
+                    android:id="@+id/menu_asc"
+                    android:title="New To Old"/>
             </menu>
         </item>
+
     </group>
 
     <item

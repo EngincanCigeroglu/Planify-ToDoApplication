@@ -52,28 +52,9 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
             appSharedViewModel.checkIfDatabaseEmpty(data)
             adapter.setData(data) })
-/*
-        appSharedViewModel.emptyDatabase.observe(viewLifecycleOwner,  Observer {
-            showEmptyDatabase(it)
-        })
 
-        floatingActionButton = view.findViewById(R.id.floatingActionButton)
-        floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_listFragment_to_addFragment)
-        }*/
 
     }
-
-    /*private fun showEmptyDatabase(emptyDatabase: Boolean) {
-        val text = view?.findViewById<TextView>(R.id.No_Data_Text)
-
-        if (emptyDatabase == true)
-        {
-            text?.visibility = View.VISIBLE
-        }else{
-            text?.visibility = View.INVISIBLE
-        }
-    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -84,11 +65,8 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         binding.lifecycleOwner = this
         binding.appSharedViewModel = appSharedViewModel
 
-
-        // val view = inflater.inflate(R.layout.fragment_list, container, false)
-
         setHasOptionsMenu(true)
-        //return inflater.inflate(R.layout.fragment_list, container, false)
+
         return binding.root
     }
 
@@ -108,6 +86,10 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
             R.id.menu_priority_high -> appViewModel.sortByHighPriority.observe(viewLifecycleOwner) { adapter.setData(it) }
             R.id.menu_priority_low -> appViewModel.sortByLowPriority.observe(viewLifecycleOwner) { adapter.setData(it) }
+
+            R.id.menu_asc -> appViewModel.sortByDateDesc.observe(viewLifecycleOwner) { adapter.setData(it) }
+            R.id.menu_desc -> appViewModel.sortByDateAsc.observe(viewLifecycleOwner) { adapter.setData(it) }
+
             android.R.id.home -> requireActivity().onBackPressed()
         }
 

@@ -15,15 +15,11 @@ import com.todoproject.database.models.MyData
 
 class AppSharedViewModel(application: Application): AndroidViewModel(application) {
 
-    /** ============================= List Fragment ============================= */
-
     val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun checkIfDatabaseEmpty(myData: List<MyData>){
         emptyDatabase.value = myData.isEmpty()
     }
-
-    /** ============================= Add/Update Fragment ============================= */
 
     val listener: AdapterView.OnItemSelectedListener = object :
         AdapterView.OnItemSelectedListener{

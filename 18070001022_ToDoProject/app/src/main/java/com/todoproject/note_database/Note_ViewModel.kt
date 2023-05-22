@@ -9,25 +9,28 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class Note_ViewModel(application: Application) : AndroidViewModel(application) {
+    private val noteRepository: Note_repository
 
-    private val noteDao: Note_databasedao = Note_database.getDatabase(application).Note_databasedao()
-    private val repository: Note_repository = Note_repository(noteDao)
+    init {
+        val noteDao = Note_database.getDatabase(application).Note_databasedao()
+        noteRepository = Note_repository(noteDao)
+    }
 
-    val getAllData: LiveData<List<MyNotes>> = repository.getAllData
+    val getAllData: LiveData<List<MyNotes>> = noteRepository.getAllData
 
     fun insertNote(note: MyNotes) {
         viewModelScope.launch(Dispatchers.IO) {
-        repository.insertNote(note)
+            noteRepository.insertNote(note)
         }
     }
 
-   fun updateNote(note: MyNotes) {
-       viewModelScope.launch(Dispatchers.IO) {
-           repository.updateNote(note)
-       }
+    fun updateNote(note: MyNotes) {
+        viewModelScope.launch(Dispatchers.IO) {
+            noteRepository.updateNote(note)
+        }
     }
 
     fun searchDatabase(searchQuery: Long): LiveData<MyNotes> {
-        return repository.searchDatabase(searchQuery)
+        return noteRepository.searchDatabase(searchQuery)
     }
 }
