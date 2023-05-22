@@ -16,6 +16,7 @@ import com.todoproject.R
 import com.todoproject.database.AppSharedViewModel
 import com.todoproject.database.AppViewModel
 import com.todoproject.database.models.MyData
+import java.text.SimpleDateFormat
 import java.util.*
 
 class AddFragment : Fragment() {
@@ -60,32 +61,11 @@ class AddFragment : Fragment() {
         }
 
         setHasOptionsMenu(true)
-        // Inflate the layout for this fragment
         return view
     }
-/*
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.addfragment_menu, menu)
-            }
 
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                if (menuItem.itemId == R.id.add_menu) {
-                    insertToDatabase()
-                } else if (menuItem.itemId == android.R.id.home) {
-                    requireActivity().onBackPressedDispatcher.onBackPressed()
-                }
-                return true
-            }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-    }
-*/
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.addfragment_menu, menu)
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean{
@@ -95,19 +75,22 @@ class AddFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-
     private fun insertToDatabase() {
 
         val view = getView()
         val taskTitle = view?.findViewById<EditText>(R.id.TaskTitle)
         val prioritySpinner = view?.findViewById<Spinner>(R.id.PrioritySpinner)
         val taskDescription = view?.findViewById<EditText>(R.id.TaskDescription)
-        val date = view?.findViewById<TextView>(R.id.Show_date)
+        val date_text = view?.findViewById<TextView>(R.id.Show_date)
 
         val mTitle = taskTitle?.text.toString()
         val mPriority = prioritySpinner?.selectedItem.toString()
         val mDescription = taskDescription?.text.toString()
-        val mdate = date?.text.toString()
+        val mdate = date_text?.text.toString()
+
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val date2 = dateFormat.parse(mdate)
+        val mydate = date2?.time ?: 0
 
         val validation = appSharedViewModel.verifyDataFromUser(mTitle, mDescription)
         if (validation) {
@@ -115,13 +98,12 @@ class AddFragment : Fragment() {
             val newAddedData = MyData(
                 0,
                 mTitle,
-                //mSharedViewModel.parsePriority(mPriority),
                 appSharedViewModel.parsePriority(mPriority),
                 mDescription,
-                mdate
+                mydate
             )
             appViewModel.insertData(newAddedData)
-            Toast.makeText(requireContext(), "Task Successfully added!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Task Successfully Added!", Toast.LENGTH_SHORT).show()
             // Navigate Back
             findNavController().navigate(R.id.action_addFragment_to_listFragment)
         } else {

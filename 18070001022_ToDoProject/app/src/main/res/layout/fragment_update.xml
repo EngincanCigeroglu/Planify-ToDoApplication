@@ -9,125 +9,129 @@
             type="com.todoproject.fragments.update.UpdateFragmentArgs" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="24dp"
-        tools:context=".fragments.update.UpdateFragment">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/Update_TaskText"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="12dp"
-            android:paddingTop="10dp"
-            android:text="Title"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/Update_Task_title"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:paddingStart="10dp"
-            android:textColor="@color/black"
-            android:inputType="textPersonName"
-            android:text="@{args.currentItem.title}"
-            android:background="@drawable/border_black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Update_TaskText" />
-
-        <TextView
-            android:id="@+id/Update_PriorityText"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="24dp"
-            android:textSize="20dp"
-            android:text="Priority"
-
-            android:paddingTop="10dp"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Update_Task_title" />
-
-        <Spinner
-            android:id="@+id/Update_Priority_spinner"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:parsePriorityToInt="@{args.currentItem.priority}"
-            android:background="@drawable/border_black"
-            android:entries="@array/priorities"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Update_PriorityText" />
-
-
-        <TextView
-            android:id="@+id/Update_DescriptionText"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="24dp"
-            android:paddingTop="10dp"
-            android:textSize="20dp"
-            android:text="Description"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Update_Priority_spinner" />
-
-        <EditText
-            android:id="@+id/Update_Task_description"
-            android:layout_width="0dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/border_black"
-            android:ems="10"
-            android:gravity="top|start"
-            android:inputType="textMultiLine"
-            android:text="@{args.currentItem.description}"
-            android:paddingStart="10dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Update_DescriptionText" />
-
-        <Button
-            android:id="@+id/Update_DatePickerButton"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Change Date"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Update_Task_description" />
+            android:padding="24dp"
+            tools:context=".fragments.update.UpdateFragment">
 
-        <TextView
-            android:id="@+id/Update_Date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Update_DatePickerButton"
-            tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/Update_TaskText"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:paddingTop="10dp"
+                android:text="Title"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/Update_Task_title"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:paddingStart="10dp"
+                android:textColor="@color/black"
+                android:inputType="textPersonName"
+                android:text="@{args.currentItem.title}"
+                android:background="@drawable/border_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Update_TaskText" />
+
+            <TextView
+                android:id="@+id/Update_PriorityText"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="24dp"
+                android:textSize="20dp"
+                android:text="Priority"
+
+                android:paddingTop="10dp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Update_Task_title" />
+
+            <Spinner
+                android:id="@+id/Update_Priority_spinner"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:parsePriorityToInt="@{args.currentItem.priority}"
+                android:background="@drawable/border_black"
+                android:entries="@array/priorities"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Update_PriorityText" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/Update_DescriptionText"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="24dp"
+                android:paddingTop="10dp"
+                android:textSize="20dp"
+                android:text="Description"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Update_Priority_spinner" />
+
+            <EditText
+                android:id="@+id/Update_Task_description"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/border_black"
+                android:ems="10"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:text="@{args.currentItem.description}"
+                android:paddingStart="10dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Update_DescriptionText" />
+
+            <Button
+                android:id="@+id/Update_DatePickerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Change Date"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Update_Task_description" />
+
+            <TextView
+                android:id="@+id/Update_Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Update_DatePickerButton"
+                tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

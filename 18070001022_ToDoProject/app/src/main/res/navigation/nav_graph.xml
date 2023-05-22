@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.todoproject.calendarFragment"
+        android:name="com.todoproject.fragments.calendar.calendarFragment"
         android:label="Calendar"
         tools:layout="@layout/fragment_calendar" />
 </navigation>

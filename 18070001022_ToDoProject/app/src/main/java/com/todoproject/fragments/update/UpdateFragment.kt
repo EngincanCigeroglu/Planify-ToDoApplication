@@ -15,6 +15,7 @@ import com.todoproject.database.AppSharedViewModel
 import com.todoproject.database.AppViewModel
 import com.todoproject.database.models.MyData
 import com.todoproject.databinding.FragmentUpdateBinding
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -37,21 +38,18 @@ class UpdateFragment : Fragment() {
         val bottomNavigationView =
             requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.visibility = View.INVISIBLE
+
+
         _binding = FragmentUpdateBinding.inflate(inflater,container,false)
         binding.args = args
 
         binding.UpdatePrioritySpinner.onItemSelectedListener = appSharedViewModel.listener
 
-       /* val view =  inflater.inflate(R.layout.fragment_update, container, false)
+        val date = Date(args.currentItem.date)
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val formattedDate = dateFormat.format(date)
 
-        view?.findViewById<EditText>(R.id.Update_Task_title)?.setText(args.currentItem.title)
-        view?.findViewById<EditText>(R.id.Update_Task_description)?.setText(args.currentItem.description)
-        view?.findViewById<Spinner>(R.id.Update_Priority_spinner)?.setSelection(PriorityParse(args.currentItem.priority))
-        view?.findViewById<Spinner>(R.id.Update_Priority_spinner)?.onItemSelectedListener = appSharedViewModel.listener
-
-
-        return view*/
-        binding.UpdateDate.text = args.currentItem.date
+        binding.UpdateDate.text = formattedDate.toString()
 
         //calender
         val c = Calendar.getInstance()
@@ -61,6 +59,7 @@ class UpdateFragment : Fragment() {
 
         val mycalender = binding.UpdateDatePickerButton
         val mydate = binding.UpdateDate
+
 
         mycalender?.setOnClickListener{
             val datePickerDialog = DatePickerDialog(requireActivity(),
@@ -101,7 +100,11 @@ class UpdateFragment : Fragment() {
         val taskTitle = binding.UpdateTaskTitle.text.toString()
         val prioritySpinner = binding.UpdatePrioritySpinner.selectedItem.toString()
         val taskDescription = binding.UpdateTaskDescription.text.toString()
-        val mydate = binding.UpdateDate.text.toString()
+        val date_text = binding.UpdateDate.text.toString()
+
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val date = dateFormat.parse(date_text)
+        val mydate = date?.time ?: 0
 
         /*
         val taskTitle = view?.findViewById<EditText>(R.id.Update_Task_title)
@@ -121,7 +124,7 @@ class UpdateFragment : Fragment() {
                 taskTitle,
                 appSharedViewModel.parsePriority(prioritySpinner),
                 taskDescription,
-                mydate
+                mydate,
             )
             appViewModel.updateData(updatedData)
             Toast.makeText(requireContext(), "Task Successfully Updated!", Toast.LENGTH_SHORT).show()

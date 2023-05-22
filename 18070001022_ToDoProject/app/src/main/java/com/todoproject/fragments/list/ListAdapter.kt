@@ -11,6 +11,7 @@ import com.todoproject.database.models.MyData
 import com.todoproject.database.models.Priority
 import com.todoproject.databinding.CardLayoutBinding
 import java.text.SimpleDateFormat
+import java.util.*
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
@@ -22,6 +23,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         val priority = binding.priorityText
         val cardview = binding.CardListView
         val mydate = binding.dateText
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -31,7 +33,12 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = dataList[position]
-        holder.mydate.text = currentItem.date
+
+        val date = Date(currentItem.date)
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val formattedDate = dateFormat.format(date)
+
+        holder.mydate.text = formattedDate
         holder.titleTextView.text = currentItem.title
         holder.descriptiontext.text = currentItem.description
         holder.cardview.setOnClickListener{

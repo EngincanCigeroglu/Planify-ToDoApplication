@@ -13,5 +13,5 @@ data class MyData(
     var title: String,
     var priority: Priority,
     var description: String,
-    var date: String,
+    var date: Long,
     ): Parcelable

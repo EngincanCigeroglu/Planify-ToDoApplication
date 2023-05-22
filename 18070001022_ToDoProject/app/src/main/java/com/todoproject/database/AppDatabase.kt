@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 import com.todoproject.database.models.MyData
 
 
-@Database(entities = [MyData::class], version = 1, exportSchema = false)
+@Database(entities = [MyData::class], version = 3, exportSchema = false)
 @TypeConverters(TypeConvert::class)
 abstract class AppDatabase : RoomDatabase() {
 
@@ -28,7 +28,8 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "my_database"
-                ).build()
+                )  .fallbackToDestructiveMigration() // veya addMigration() ile uygun göçleri tanımlayabilirsiniz
+                .build()
                 INSTANCE = instance
                 return instance
             }

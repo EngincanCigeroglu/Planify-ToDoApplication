@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.todoproject.database.models.MyData
 
-
 @Dao
 interface DatabaseDao {
     @Query("SELECT * FROM my_table ORDER BY id ASC")
